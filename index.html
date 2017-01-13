@@ -1,24 +1,32 @@
-Often while working on a classification problem we need to use non numeric, categorical data (such as sex of 
-the individual, country of origin etc). 
+<p>Often while working on a classification problem we need to use non numeric, categorical data (such as sex of 
+the individual, country of origin etc). </p> 
 
+<p>
 To be able to effectively use this data, we want to transform the categorical data to one hot encoded data. Fortunately pandas library
 supports both one hot encoding and categorical datatypes
+</p>
 
-
+<p>
 To perform one hot encoding on a columns we can use pandas.get_dummies()
+</p>
 
-import pandas as pd
-train_list = ['a','b','c']
-df_demo = pd.DataFrame(train_list, columns=['alphabet'])
-df_demo['alphabet'] = df_demo['alphabet'].astype('category') #converting the column to categorical
-pd.get_dummies(df_demo)
+<br> import pandas as pd </br>
+<br> train_list = ['a','b','c'] </br>
+<br> df_demo = pd.DataFrame(train_list, columns=['alphabet']) </br>
+<br> df_demo['alphabet'] = df_demo['alphabet'].astype('category') #converting the column to categorical </br>
+<br> pd.get_dummies(df_demo) </br>
 
+<br>
 ------------------------------------------------------------------------------------------------------------------------------------
+</br>
+
+<p>
 The get_dummies call splits the values in a given column into individual columns. When we train using this data, the classifier learns from the features present in this matrix. It might be the case that the test data has only a subset of values of the training data. In such
 a scenario, making a get dummies call on this column will result in a different array structure from training data. To overcome this problem
 we can convert the column in test data to categorical type and pass the categories from the train data. This way get_dummies will return the same columns as in train data and we can use it to predict correctly
+</p>
 
-test_list = ['a','c']
-df_demo_test = pd.DataFrame(test_list, columns=['alphabet'])
-df_demo_test['alphabet'] = df_demo_test['alphabet'].astype('category', categories=df_demo.alphabet.cat.categories)
-pd.get_dummies(df_demo_test)
+<br> test_list = ['a','c'] </br>
+<br> df_demo_test = pd.DataFrame(test_list, columns=['alphabet']) </br>
+<br> df_demo_test['alphabet'] = df_demo_test['alphabet'].astype('category', categories=df_demo.alphabet.cat.categories) </br>
+<br>  pd.get_dummies(df_demo_test) </br>

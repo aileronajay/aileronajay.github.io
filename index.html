@@ -1,4 +1,9 @@
-<p>Often while working on a classification problem we need to use non numeric, categorical data (such as sex of 
+---
+layout: default
+title: One hot encoding
+---
+<div class="blurb">
+	<p>Often while working on a classification problem we need to use non numeric, categorical data (such as sex of 
 the individual, country of origin etc). </p> 
 
 <p>
@@ -30,3 +35,4 @@ we can convert the column in test data to categorical type and pass the categori
 <br> df_demo_test = pd.DataFrame(test_list, columns=['alphabet']) </br>
 <br> df_demo_test['alphabet'] = df_demo_test['alphabet'].astype('category', categories=df_demo.alphabet.cat.categories) </br>
 <br>  pd.get_dummies(df_demo_test) </br>
+</div><!-- /.blurb -->
